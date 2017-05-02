@@ -7,7 +7,7 @@ python:
   #- "3.4"
 
 install:
-  - pip install .[dev,test]
+  - pip install -e .[dev,test]
 
 script: pytest
 
