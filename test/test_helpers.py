@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from ScrapyTDD import *
+from scrapy_tdd import *
 from scrapy.http import Request, FormRequest
 from scrapy import Item
 
@@ -8,19 +8,19 @@ import pytest
 def describe_mock_response_creation():
 
     def it_creates_mock_responses():
-        resp = mock_response_from_sample_file(my_path(__file__), "./test_test_tools.py",
+        resp = mock_response_from_sample_file(my_path(__file__), "./test_helpers.py",
                                               url="http://test.url", meta={"test": "key"})
         assert resp.meta["test"] == "key"
         assert resp.url == "http://test.url"
         assert "it_creates_mock_responses" in resp.body
 
     def it_tolerates_missing_http():
-        resp = mock_response_from_sample_file(my_path(__file__), "./test_test_tools.py",
+        resp = mock_response_from_sample_file(my_path(__file__), "./test_helpers.py",
                                               url="test.url" )
         assert resp.url == "http://test.url"
 
     def it_tolerates_incomplete_paths():
-        resp = mock_response_from_sample_file(my_path(__file__), "test_test_tools.py", )
+        resp = mock_response_from_sample_file(my_path(__file__), "test_helpers.py", )
         assert "it_creates_mock_responses" in resp.body
 
 def describe_request_result_handling():
