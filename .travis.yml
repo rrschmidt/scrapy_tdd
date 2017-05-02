@@ -1,13 +1,15 @@
 language: python
 
-env:
-  - TOXENV=py27
-  #- TOXENV=py33
-  #- TOXENV=py34
+python:
+  - "2.7"
+  #- "3.2"
+  #- "3.3"
+  #- "3.4"
 
-install: pip install tox
+install:
+  - pip install .
 
-script: tox
+script: pytest
 
 notifications:
   email: false

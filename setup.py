@@ -21,7 +21,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='scrapy_tdd',
 
-    version='0.1.1-rc1',
+    version='0.1.2-rc1',
 
     description='Helpers and examples to build Scrapy Crawlers in a test driven way.',
     long_description=long_description,
@@ -46,7 +46,7 @@ setup(
         'Topic :: Software Development :: Build Tools',
 
         # Pick your license as you wish (should match "license" above)
-        'License :: GPLv3',
+        'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
