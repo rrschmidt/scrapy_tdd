@@ -7,9 +7,10 @@ python:
   #- "3.4"
 
 install:
+  - pip install pytest
   - pip install -e .[dev,test]
 
-script: pytest
+script: py.test
 
 notifications:
   email: false
