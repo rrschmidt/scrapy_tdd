@@ -2,38 +2,53 @@
 from scrapy_tdd import *
 from scrapy.http import Request, FormRequest
 from scrapy import Item
-
+import os
 import pytest
+
+def sample_file_path():
+    return os.path.join(my_path(__file__), 'samples')
 
 def describe_mock_response_creation():
 
-    def it_creates_mock_responses():
-        resp = mock_response_from_sample_file(my_path(__file__), "./test_helpers.py",
+    def describe_basic_operation():
+        resp = mock_response_from_sample_file(sample_file_path(), "some_html_file.html",
                                               url="http://test.url", meta={"test": "key"})
-        assert resp.meta["test"] == "key"
-        assert resp.url == "http://test.url"
-        assert "it_creates_mock_responses" in resp.body
 
-    def it_tolerates_missing_http():
-        resp = mock_response_from_sample_file(my_path(__file__), "./test_helpers.py",
+        def it_creates_mock_responses():
+            assert u"this is part of a mock HTML response" in resp.text
+            assert b"this is part of a mock HTML response" in resp.body
+
+        def it_reports_the_response_url():
+            assert resp.url == "http://test.url"
+
+        def it_passes_meta_params_along():
+            assert resp.meta["test"] == "key"
+
+    def it_tolerates_missing_protocol_and_defaults_to_http():
+        resp = mock_response_from_sample_file(sample_file_path(), "some_html_file.html",
                                               url="test.url" )
         assert resp.url == "http://test.url"
 
-    def it_tolerates_incomplete_paths():
-        resp = mock_response_from_sample_file(my_path(__file__), "test_helpers.py", )
-        assert "it_creates_mock_responses" in resp.body
-
     @pytest.mark.skip("needs to be implemented")
-    def it_accepts__file__instead_of_my_path():
+    def it_accepts__file__inplace_of_my_path():
         pass
 
-    @pytest.mark.skip("needs to be implemented")
-    def it_loads_xml_files_properly_as_XmlResponse():
-        pass
+    def describe_encoding_and_type_handling():
+        @pytest.mark.skip("needs to be implemented")
+        def it_detects_strange_encodings_based_on_html_tag():
+            pass
 
-    @pytest.mark.skip("needs to be implemented")
-    def it_loads_json_files_properly_as_TextResponse():
-        pass
+        @pytest.mark.skip("needs to be implemented")
+        def it_loads_xml_files_properly_as_XmlResponse():
+            pass
+
+        @pytest.mark.skip("needs to be implemented")
+        def it_loads_json_files_properly_as_TextResponse():
+            pass
+
+        @pytest.mark.skip("needs to be implemented")
+        def it_loads_binary_file_types_properly():
+            pass
 
 
 def describe_request_result_handling():

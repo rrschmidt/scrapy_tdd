@@ -1,2 +1,3 @@
 # -*- coding: utf-8 -*-
-from helpers import *
+from __future__ import absolute_import
+from .helpers import *
