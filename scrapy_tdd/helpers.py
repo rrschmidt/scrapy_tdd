@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from scrapy.http import HtmlResponse, Request
+from scrapy.http import HtmlResponse, Request, XmlResponse, Response, TextResponse
 from scrapy import Item
 import os
 
@@ -17,7 +17,12 @@ def mock_response_from_sample_file(file_dir, file_name,
     if "http" not in url: url = "http://" + url
     html = _read_text_fixture(file_dir, file_name)
     req = Request(url, meta=meta)
-    response = HtmlResponse(url, body = html, request=req)
+    if file_name.endswith(".xml"):
+        response = XmlResponse(url, body=html, request=req)
+    elif file_name.endswith(".html") or file_name.endswith(".htm"):
+        response = HtmlResponse(url, body = html, request=req)
+    else:
+        response = TextResponse(url, body=html, request=req)
     return response
 
 

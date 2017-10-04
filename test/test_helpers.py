@@ -23,6 +23,19 @@ def describe_mock_response_creation():
         resp = mock_response_from_sample_file(my_path(__file__), "test_helpers.py", )
         assert "it_creates_mock_responses" in resp.body
 
+    @pytest.mark.skip("needs to be implemented")
+    def it_accepts__file__instead_of_my_path():
+        pass
+
+    @pytest.mark.skip("needs to be implemented")
+    def it_loads_xml_files_properly_as_XmlResponse():
+        pass
+
+    @pytest.mark.skip("needs to be implemented")
+    def it_loads_json_files_properly_as_TextResponse():
+        pass
+
+
 def describe_request_result_handling():
     single_request = Request("http://test.com")
     mixed_requests = [ Request("http://test.com"), FormRequest("http://test2.com") ]
@@ -57,8 +70,10 @@ def describe_request_result_handling():
         assert count_requests_in_parse_result(complete_mix) == 2
         assert count_items_in_parse_result(complete_mix) == 1
 
+
 class MyItem(Item):
     pass
+
 
 def describe_item_result_handling():
     single_item = Item()
