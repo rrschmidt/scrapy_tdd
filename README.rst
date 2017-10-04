@@ -3,15 +3,29 @@ scrapy_tdd
 
 Helpers and examples to build Scrapy Crawlers in a test driven way.
 
-Motivation
+Motivation / Why should I develop Scrapy Crawlers using TDD?
 ----------
 
-... coming soon ...
+#. The develop - test cycle goes down to a few seconds and so it allows you to get a properly
+working scraper up much faster
+#. When bugs are discovered in "the wild" with real data, new example files, a test and a fix can be created and tested
+much faster
+#. It allows for fast refactoring without breaking anything - which results in much cleaner scraper code
+#. It just feels right when you are used to be doing TDD
 
-Why not scrapy's contracts?
+What's the difference to Scrapy's Spiders Contracts?
 ---------------------------
 
-... coming soon ...
+Scrapy has its own builtin testing feature named `Spiders Contracts <https://doc.scrapy.org/en/latest/topics/contracts.html>`_
+
+I tried to use them for some time, but decided to build real unit tests in a unit test framework like py.test because
+of these shortcomings:
+
+- its philosophy is geared towards testing against contracts (thus the name) that by nature are more broad and less
+specific concepts. Testing for exact field contents in items can be done, but is difficult and fragile
+- its documentation and basic set of features is a bit thin
+- it mixes implementation code with contract descriptions which is only usable when there are few and simple contracts
+
 
 Installation
 ============
