@@ -1,10 +1,13 @@
 scrapy_tdd
 ==========
 
+.. image:: https://travis-ci.org/rrschmidt/scrapy_tdd.svg?branch=master
+    :target: https://travis-ci.org/rrschmidt/scrapy_tdd
+
 Helpers and examples to build Scrapy Crawlers in a test driven way.
 
 Motivation / Why should I develop Scrapy Crawlers using TDD?
-----------
+------------------------------------------------------------
 
 #. The develop - test cycle goes down to a few seconds and so it allows you to get a properly
    working scraper up much faster
@@ -14,7 +17,7 @@ Motivation / Why should I develop Scrapy Crawlers using TDD?
 #. It just feels right when you are used to be doing TDD
 
 What's the difference to Scrapy's Spiders Contracts?
----------------------------
+----------------------------------------------------
 
 Scrapy has its own builtin testing feature named `Spiders Contracts <https://doc.scrapy.org/en/latest/topics/contracts.html>`_
 
@@ -56,7 +59,6 @@ Full Documentation
 Missing / next steps
 ====================
 
-* Python 3.x compatibility
 * Mocking Request-Response pairs
 
 How to contribute
