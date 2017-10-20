@@ -1,8 +1,13 @@
-scrapy_tdd
-==========
 
 .. image:: https://travis-ci.org/rrschmidt/scrapy_tdd.svg?branch=master
     :target: https://travis-ci.org/rrschmidt/scrapy_tdd
+
+.. image:: https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg
+   :target: https://codeclimate.com/github/codeclimate/codeclimate/coverage
+   :alt: Test Coverage
+
+scrapy_tdd
+==========
 
 Helpers and examples to build Scrapy Crawlers in a test driven way.
 
