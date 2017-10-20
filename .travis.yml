@@ -1,8 +1,9 @@
+
+dist: trusty
 language: python
 
 python:
   - "2.7"
-  - "3.3"
   - "3.4"
   - "3.5"
   - "3.6"
@@ -13,7 +14,15 @@ install:
   - pip install pytest
   - pip install -e .[dev,test]
 
-script: py.test
+script:
+  - py.test
+  - sonar-scanner
 
 notifications:
   email: false
+
+addons:
+  sonarcloud:
+    organization: "rrschmidt-github"
+    token:
+      secure: "1L9UiE741PPxryHxRbMRHJQyc4kss+yJ2IC/HtCHMSG7C+wuR53JfGM8ulcrcnAlG2Sgpnxdh3MsvttPnBfoHo9yGdPDc89nlhehCl/0iOqgaXXCCGkK0fXf6Lp0Rujg6p9vG19uWo7HQRTagqETA+LFbZHHv2YHhKzpcSPYtjBZOqiAoAo6B+gBOcBujnkxQxWhMNxu5gGIvFaufQVqvuzXCI/BBVxx5zKehn5Ayn30GOHgFWMb/IGyJQ0f4yoaPN1xmNll9gJ9B+2xo+kg56cdrfh3I7jA1V+plymQOqsLO22tiwXqhiqYuDFpjSX1NKZviRM3kIM8Ba/15Wm64mLj4OthwZ8DYaFx1n2QpN1z/Q7pyC/6YfXC88CWwHWIPulOtDdQmvSLK4P/nihKHQ3mvLjH8jEOmszBg21WnkTtVqqEcBYiwKKJVx5yBeG+o0nip/afwSTI2l3tRwnazMPyZsYptHAqyH6I/vbjuDuDEqYsXGe7KDCOPeyw05FZ3vLo2LP8hdbrogymWscmAEGt/fSUXVSTioD60W42zo4/wIWqXlJJ0+5fI8HOtsoo86WI2RT/g6FPby0tOOD31kE8yiBKrh/dVx5ydtSP6Bq7rX8FB5pKqk5DnIuqEhBzW02jkemr9Ft+mShLDthWbzXR/olDy2y0qOOE4bDc6A4="
