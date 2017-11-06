@@ -20,7 +20,7 @@ before_script:
   - ./cc-test-reporter before-build
 
 script:
-  - py.test --cov=./scrapy_tdd --cov-report=coverage.xml
+  - py.test --cov=./scrapy_tdd --cov-report=./coverage.xml
   #- sonar-scanner
 
 after_script:
