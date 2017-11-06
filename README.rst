@@ -3,7 +3,7 @@
     :target: https://travis-ci.org/rrschmidt/scrapy_tdd
 
 .. image:: https://codeclimate.com/github/codeclimate/codeclimate/badges/coverage.svg
-   :target: https://codeclimate.com/github/codeclimate/codeclimate/coverage
+   :target: https://codeclimate.com/github/rrschmidt/scrapy_tdd/coverage
    :alt: Test Coverage
 
 scrapy_tdd
