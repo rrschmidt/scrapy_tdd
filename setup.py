@@ -68,7 +68,7 @@ setup(
     # $ pip install -e .[dev,test]
     extras_require={
         'dev': ['scrapy', 'future'],
-        'test': ['pytest', 'pytest-describe'],
+        'test': ['pytest', 'pytest-describe', 'pytest-cov'],
     },
 
     # If there are data files included in your packages that need to be
