@@ -2,6 +2,10 @@
 dist: trusty
 language: python
 
+env:
+  global:
+    - CC_TEST_REPORTER_ID=3fba0cac54386959e213f49cda474bc4b453169f240de81cbe48bfb0b60e9fe0
+
 python:
   - "2.7"
   - "3.4"
@@ -14,9 +18,17 @@ install:
   - pip install pytest
   - pip install -e .[dev,test]
 
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
 script:
   - py.test
-  - sonar-scanner
+  #- sonar-scanner
+
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 notifications:
   email: false
