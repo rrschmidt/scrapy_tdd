@@ -2,10 +2,6 @@
 dist: trusty
 language: python
 
-env:
-  global:
-    - CC_TEST_REPORTER_ID=3fba0cac54386959e213f49cda474bc4b453169f240de81cbe48bfb0b60e9fe0
-
 python:
   - "2.7"
   - "3.4"
