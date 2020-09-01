@@ -1,5 +1,5 @@
 
-dist: trusty
+#dist: trusty
 language: python
 
 python:
