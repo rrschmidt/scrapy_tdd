@@ -29,7 +29,7 @@ setup(
     url='https://github.com/rrschmidt/ScrapyTDD',
 
     author='Ruediger Schmidt',
-    author_email='ruediger.schmidt@gmx.net',
+    author_email='ruediger.schmidt@done-data-solutions.com',
 
     license='GPLv3',
 

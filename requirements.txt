@@ -1,0 +1,8 @@
+scrapy
+
+future
+futures
+
+pytest
+pytest-describe
+pytest-cov
