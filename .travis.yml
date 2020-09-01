@@ -1,17 +1,18 @@
 
-#dist: trusty
+dist: bionic
 language: python
 
 python:
-  - "2.7"
   - "3.5"
   - "3.6"
   - "3.7"
   - "3.8"
 
 install:
+  - python -m pip install --upgrade pip 
   - pip install -r requirements.txt --upgrade
   - pip install -e .[dev,test]
+  - pip list
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter

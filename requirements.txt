@@ -1,7 +1,6 @@
-scrapy
 
-future
-futures
+attrs>=19.2.0
+scrapy
 
 pytest
 pytest-describe
