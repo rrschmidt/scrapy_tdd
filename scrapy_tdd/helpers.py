@@ -8,8 +8,13 @@ import codecs
 def my_path(file):
     return os.path.dirname(os.path.realpath(file))
 
-def _read_sample_file(file_dir, partial_file_path, encoding):
+def _read_textual_file(file_dir, partial_file_path, encoding):
     with codecs.open(os.path.join(file_dir, partial_file_path), encoding=encoding) as file:
+        data = file.read()
+    return data
+
+def _read_binary_file(file_dir, partial_file_path):
+    with open(os.path.join(file_dir, partial_file_path), mode="br") as file:
         data = file.read()
     return data
 
@@ -17,14 +22,19 @@ def mock_response_from_sample_file(file_dir, file_name,
                                    meta={}, url="http://fake_url.com",
                                    encoding='utf-8'):
     if "http" not in url: url = "http://" + url
-    html = _read_sample_file(file_dir, file_name, encoding=encoding)
     req = Request(url, meta=meta)
     if file_name.endswith(".xml"):
-        response = XmlResponse(url, body=html, request=req, encoding=encoding)
+        body = _read_textual_file(file_dir, file_name, encoding=encoding)
+        response = XmlResponse(url, body=body, request=req, encoding=encoding)
+    elif file_name.endswith(".json"):
+        body = _read_textual_file(file_dir, file_name, encoding=encoding)
+        response = TextResponse(url, body=body, request=req, encoding=encoding)
     elif file_name.endswith(".html") or file_name.endswith(".htm"):
-        response = HtmlResponse(url, body = html, request=req, encoding=encoding)
+        body = _read_textual_file(file_dir, file_name, encoding=encoding)
+        response = HtmlResponse(url, body=body, request=req, encoding=encoding)
     else:
-        response = TextResponse(url, body=html, request=req, encoding=encoding)
+        body = _read_binary_file(file_dir, file_name)
+        response = Response(url, body=body, request=req)
     return response
 
 

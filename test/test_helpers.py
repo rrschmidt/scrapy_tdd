@@ -38,15 +38,16 @@ def describe_mock_response_creation():
         def it_detects_strange_encodings_based_on_html_tag():
             pass
 
-        def it_loads_xml_files_properly_as_XmlResponse():
+        def it_loads_xml_files_properly_as_TextResponse():
             resp = mock_response_from_sample_file(sample_file_path(), "some_xml_file.xml",
                                                   url="test.url" )
-            assert isinstance(resp, XmlResponse)
+            print(resp.__class__.__name__)
+            assert isinstance(resp, TextResponse)
 
-        def it_loads_json_files_properly_as_JsonResponse():
+        def it_loads_json_files_properly_as_TextResponse():
             resp = mock_response_from_sample_file(sample_file_path(), "some_json_file.json",
                                                   url="test.url" )
-            assert isinstance(resp, JsonResponse)
+            assert isinstance(resp, TextResponse)
 
         def it_loads_image_files_properly_as_Response():
             resp = mock_response_from_sample_file(sample_file_path(), "some_image_file.jpg",

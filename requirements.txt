@@ -6,3 +6,4 @@ futures
 pytest
 pytest-describe
 pytest-cov
+pytest-watch
