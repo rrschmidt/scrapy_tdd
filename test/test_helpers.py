@@ -38,17 +38,25 @@ def describe_mock_response_creation():
         def it_detects_strange_encodings_based_on_html_tag():
             pass
 
-        @pytest.mark.skip("needs to be implemented")
         def it_loads_xml_files_properly_as_XmlResponse():
-            pass
+            resp = mock_response_from_sample_file(sample_file_path(), "some_xml_file.xml",
+                                                  url="test.url" )
+            assert isinstance(resp, XmlResponse)
 
-        @pytest.mark.skip("needs to be implemented")
-        def it_loads_json_files_properly_as_TextResponse():
-            pass
+        def it_loads_json_files_properly_as_JsonResponse():
+            resp = mock_response_from_sample_file(sample_file_path(), "some_json_file.json",
+                                                  url="test.url" )
+            assert isinstance(resp, JsonResponse)
 
-        @pytest.mark.skip("needs to be implemented")
-        def it_loads_binary_file_types_properly():
-            pass
+        def it_loads_image_files_properly_as_Response():
+            resp = mock_response_from_sample_file(sample_file_path(), "some_image_file.jpg",
+                                                  url="test.url" )
+            assert isinstance(resp, Response)
+
+        def it_suspects_any_other_file_type_to_be_a_binary_and_loads_properly():
+            resp = mock_response_from_sample_file(sample_file_path(), "some_binary_file.xyz",
+                                                  url="test.url" )
+            assert isinstance(resp, Response)
 
 
 def describe_request_result_handling():
