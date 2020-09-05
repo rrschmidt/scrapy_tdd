@@ -23,20 +23,38 @@ def mock_response_from_sample_file(file_dir, file_name,
                                    encoding='utf-8'):
     if "http" not in url: url = "http://" + url
     req = Request(url, meta=meta)
-    if file_name.endswith(".xml"):
+    if _is_textual_file(file_name):
         body = _read_textual_file(file_dir, file_name, encoding=encoding)
-        response = XmlResponse(url, body=body, request=req, encoding=encoding)
-    elif file_name.endswith(".json"):
-        body = _read_textual_file(file_dir, file_name, encoding=encoding)
-        response = TextResponse(url, body=body, request=req, encoding=encoding)
-    elif file_name.endswith(".html") or file_name.endswith(".htm"):
-        body = _read_textual_file(file_dir, file_name, encoding=encoding)
-        response = HtmlResponse(url, body=body, request=req, encoding=encoding)
     else:
         body = _read_binary_file(file_dir, file_name)
-        response = Response(url, body=body, request=req)
-    return response
 
+    if _is_xml_like_file(file_name):
+        return XmlResponse(url, body=body, request=req, encoding=encoding)
+    elif _is_html_like_file(file_name):
+        return HtmlResponse(url, body=body, request=req, encoding=encoding)
+    elif _is_other_text_like_file(file_name):
+        return TextResponse(url, body=body, request=req, encoding=encoding)
+    else:
+        return Response(url, body=body, request=req)
+
+def _is_textual_file(filename):
+    return _is_xml_like_file(filename) or _is_html_like_file(filename) or _is_other_text_like_file(filename)
+
+def _is_xml_like_file(filename):
+    return filename.endswith(".xml")
+
+def _is_html_like_file(filename):
+    return _str_endswith_any(filename, [".html", ".htm"])
+
+def _is_other_text_like_file(filename):
+    return _str_endswith_any(filename, [".json", ".txt"])
+
+def _str_endswith_any(text, accepted_ends):
+    # TODO: likely can be done nicer with a neat regex
+    for accepted_end in accepted_ends:
+        if text.endswith(accepted_end):
+            return True
+    return False
 
 def urls_from_requests(results):
     return set([ r.url for r in requests_in_parse_result(results) ])
