@@ -21,7 +21,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='scrapy_tdd',
 
-    version='0.1.3',
+    version='0.1.5',
 
     description='Helpers and examples to build Scrapy Crawlers in a test driven way.',
     long_description=long_description,
