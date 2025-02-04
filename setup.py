@@ -21,7 +21,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 setup(
     name='scrapy_tdd',
 
-    version='0.1.5',
+    version='0.2.0',
 
     description='Helpers and examples to build Scrapy Crawlers in a test driven way.',
     long_description=long_description,
@@ -50,11 +50,11 @@ setup(
 
         # Specify the Python versions you support here. In particular, ensure
         # that you indicate whether you support Python 2, Python 3 or both.
-        #'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
+        # 'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
+        'Programming Language :: Python :: 3.11',
     ],
 
     keywords='scrapy development tdd test',
@@ -70,13 +70,13 @@ setup(
         'test': ['pytest', 'pytest-describe', 'pytest-cov'],
     },
 
-    python_requires='>=3.5' 
+    python_requires='>=3.8'
 
     # If there are data files included in your packages that need to be
     # installed, specify them here.  If using Python 2.6 or less, then these
     # have to be included in MANIFEST.in as well.
-    #package_data={
+    # package_data={
     # 'sample': ['package_data.dat'],
-    #},
+    # },
 
 )
