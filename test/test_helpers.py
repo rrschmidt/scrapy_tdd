@@ -154,7 +154,7 @@ def test_response_for_ico():
     assert b"test_cookie=cookie_value" in response.headers.get("Set-Cookie")
 
 
-def test_response_for_ico():
+def test_response_for_png():
     headers = {"Custom-Header": "test-value"}
     cookies = {"test_cookie": "cookie_value"}
 
