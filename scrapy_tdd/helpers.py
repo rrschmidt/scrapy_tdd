@@ -25,8 +25,10 @@ def _read_binary_file(file_dir, partial_file_path):
 
 
 def mock_response_from_sample_file(file_dir, file_name,
-                                   meta={}, url="http://fake_url.com",
+                                   meta=None, url="http://fake_url.com",
                                    encoding='utf-8', headers=None, cookies=None):
+    if meta is None:
+        meta = {}
     if "http" not in url:
         url = "http://" + url
     req = Request(url, meta=meta)
